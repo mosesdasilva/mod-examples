@@ -6,19 +6,15 @@ import { MoreCode } from "./MoreCode";
 
 class Mod implements IPostSptLoadMod
 {
-    public postSptLoad(container: DependencyContainer): void
+    public postDBLoad(container: DependencyContainer): void 
     {
-        // get logger
-        const logger = container.resolve<ILogger>("WinstonLogger");
+     const logger = container.resolve<ILogger>("WinstonLogger");
+     
+     const moreCode = new MoreCode();
 
-        // Make a new instance of the 'MoreCode' class
-        const moreCode = new MoreCode();
+     const result = moreCode.getTheWordFlub();
 
-        // call the function 'getTheWordFlub()' and assign the result to 'result'
-        const result = moreCode.getTheWordFlub();
-
-        // log the result of running getTheWordFlub() from the other class
-        logger.info(`Here is the value from my second class: ${result}`);
+     logger.info (`Here is the value form my sesond class: ${result}`);
     }
 }
 
